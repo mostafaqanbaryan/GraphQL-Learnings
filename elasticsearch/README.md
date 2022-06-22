@@ -6,10 +6,10 @@
 - Built on Apache Lucene
 - Instead of searching the text directly, it searches an index
 - Logical Concepts
-	- Index
-	- Schema
-	- Document
-	- Inverted Index![How Inverted Index Works by knowi.com](https://www.knowi.com/wp-content/uploads/2020/03/inverse-index.webp)
+    - Index
+    - Schema
+    - Document
+    - Inverted Index![How Inverted Index Works by knowi.com](https://www.knowi.com/wp-content/uploads/2020/03/inverse-index.webp)
 
 # Why Elasticsearch?
 - https://db-engines.com/en/ranking/search+engine
@@ -46,43 +46,42 @@
 - If you index the phrase `the quick brown fox jumps` as a single string and the user searches for `quick fox`, it isn’t considered a match. However, if you tokenize the phrase and index each word separately, the terms in the query string can be looked up individually. This means they can be matched by searches for `quick fox`, `fox brown`, or other variations.
 ## Normalizer
 - Tokenization enables matching on individual terms, but each token is still matched literally. This means:
-
-	-   A search for  `Quick`  would not match  `quick`, even though you likely want either term to match the other
-	-   Although  `fox`  and  `foxes`  share the same root word, a search for  `foxes`  would not match  `fox`  or vice versa.
-	-   A search for  `jumps`  would not match  `leaps`. While they don’t share a root word, they are synonyms and have a similar meaning.
+    - A search for `Quick` would not match `quick`, even though you likely want either term to match the other
+    - Although `fox` and `foxes` share the same root word, a search for `foxes` would not match `fox` or vice versa.
+    - A search for `jumps` would not match `leaps`. While they don’t share a root word, they are synonyms and have a similar meaning.
 - To ensure search terms match these words as intended, you can apply the same tokenization and normalization rules to the query string
 - The `normalizer` property of `keyword` fields is similar to `analyzer` except that it guarantees that the analysis chain produces a single token.
 
 # [Field Types](https://www.elastic.co/guide/en/elasticsearch/reference/8.2/mapping-types.html)
 - `keyword`: structured
-          - emails, phone numbers, ids, tags
+    - emails, phone numbers, ids, tags
 - `text`: human-readable contents
-          - description of product, email body
+  - description of product, email body
 - `range`
-          - gt, lt
+  - gt, lt
 - ...
 
 # Score
 ## [Context](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-filter-context.html)
-- Query context
-	- “_How well does this document match this query clause?_"
-- Filter context
-	- “_Does this document match this query clause?_”
-	- The answer is a simple Yes or No
+- **Query context**
+    - “_How well does this document match this query clause?_"
+- **Filter context**
+    - “_Does this document match this query clause?_”
+    - The answer is a simple Yes or No
 ## [Queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-queries.html)
 - `term`
-	- **exact** query
-	- not analyzed
+    - **exact** query
+    - not analyzed
 - `match`:
-	- **contains** query
+    - **contains** query
 - `match_phrase`
-	-   **all the terms**  must appear in the field
-	- they must have the  **same order**  as the input value
-	- there must not be any **intervening terms**
+    - **all the terms** must appear in the field
+    - they must have the **same order** as the input value
+    - there must not be any **intervening terms**
 - `multi_match`
-	- match on multiple fields
+    - match on multiple fields
 
 # [Aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html)
--   Metric aggregations that calculate metrics, such as a sum or average, from field values.
--   Bucket aggregations that group documents into buckets, also called bins, based on field values, ranges, or other criteria.
--   Pipeline  aggregations that take input from other aggregations instead of documents or fields.
+- Metric aggregations that calculate metrics, such as a sum or average, from field values.
+- Bucket aggregations that group documents into buckets, also called bins, based on field values, ranges, or other criteria.
+- Pipeline aggregations that take input from other aggregations instead of documents or fields.
