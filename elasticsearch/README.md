@@ -73,13 +73,24 @@
     - **exact** query
     - not analyzed
 - `match`:
-    - **contains** query
+    - matches each token with searched query
+        - if a token is `resistor` and we search for `resist`, `resistor` will not be shown
+    - it has a `fuzziness` option that finds more results:
+        - Changing a character (box → fox)
+        - Removing a character (black → lack)
+        - Inserting a character (sic → sick)
+        - Transposing two adjacent characters (act → cat)
+        - this makes `match` a lot heavier
 - `match_phrase`
     - **all the terms** must appear in the field
     - they must have the **same order** as the input value
     - there must not be any **intervening terms**
 - `multi_match`
     - match on multiple fields
+- `wildcard`
+    - **contains** query
+    - if a token is `resistor` and we search for `*resist*`, `resistor` will be shown
+    - it's a lot heavier than `match`
 
 # [Aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html)
 - Metric aggregations that calculate metrics, such as a sum or average, from field values.
