@@ -267,7 +267,10 @@ export class NotSpecification extends CompositeSpecification {
 ```
 
 ---
-**Sources:**
-https://refactoring.guru
+**References:**
+
+Mostly https://refactoring.guru
+
 https://laracasts.com
+
 https://wikipedia.com
