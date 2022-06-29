@@ -29,6 +29,7 @@ These patterns provide various object creation mechanisms, which increase flexib
 **Singleton** is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance.
 
 **Example**: *Database*
+
 ```
 static function getInstance(){
 	if (instance == null){
@@ -63,7 +64,9 @@ We have a base class called _factory_ with a `abstract function` called _createP
 
 ## Builder
 **Builder** is a creational design pattern that lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code.
+
 **Example**: *Car* and *Manual*
+
 |Pros|Cons|
 |---|---|
 |You can construct objects step-by-step, defer construction steps or run steps recursively.|The overall complexity of the code increases since the pattern requires creating multiple new classes.|
@@ -74,9 +77,10 @@ We have a base class called _factory_ with a `abstract function` called _createP
 # Structural patterns
 These patterns explain how to assemble objects and classes into larger structures while keeping these structures flexible and efficient.
 
-## Adaptor
+## Adapter
 **Adapter** is a structural design pattern that allows objects with incompatible interfaces to collaborate.
 This is a special object that converts the interface of one object so that another object can understand it.
+
 **Example**: _XML_ to _JSON_
 
 |Pros|Cons|
@@ -93,10 +97,15 @@ The wrapper contains the same set of methods as the target and delegates to it a
 This pattern solves these problems by using _aggregation_ instead of _inheritance_.
 
 **Example**: sending notifications via Email and now you want to send notifications to other channels as well. So you have to create many subclasses like these:
-_sendFacebookAndEmail_, _sendSmsAndEmail_, sendFacebookAndSmsAndEmail_
+
+_sendFacebookAndEmail_, _sendSmsAndEmail_, _sendFacebookAndSmsAndEmail_
+
 Or you could use `booleans` as the parameters of _send_ function:
+
 `function send(bool send_fb, bool send_sms, send_email){ ... }`
+
 Or in decorator pattern:
+
 ```
 stack = new Notifier();
 if(facebookEnabled)
@@ -164,6 +173,7 @@ The Strategy pattern suggests that you take a class that does something specific
 It's where business rules can be recombined by chaining the business rules together using boolean logic.
 
 **Example**:
+
 ```
 var OverDue = new OverDueSpecification();
 var NoticeSent = new NoticeSentSpecification();
