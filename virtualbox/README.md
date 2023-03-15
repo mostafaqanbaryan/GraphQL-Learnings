@@ -1,0 +1,14 @@
+# How to install GuestAddions in Linux
+- Mount `/usr/share/virtualbox/VBoxGuestAdditions.iso` to virtual windows
+	- It would be installed via autoplay
+- After that, install it in the host:
+	- `mkdir /mnt/iso`
+	- `mount -o loop /usr/share/virtualbox/VBoxGuestAdditions.iso /mnt/iso`
+	- `/mnt/iso/./VBoxLinuxAdditions.run`
+- Download ExtPack from virtualbox site:
+	- https://download.virtualbox.org/virtualbox/
+	- ExtPack must match the installed version of virtualbox on the host
+- Import the ExtPack in `Preference/Extensions` of virtualbox
+- Add your user to virtualbox group to let it show you all your usbs
+	- `sudo adduser $USER vboxusers`
+	- After that, logout and login
